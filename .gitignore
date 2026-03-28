@@ -15,6 +15,9 @@ downloads/
 eggs/
 .eggs/
 lib/
+# NetCDF
+*.nc
+*.nc4
 lib64/
 parts/
 sdist/
