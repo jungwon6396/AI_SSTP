@@ -86,6 +86,7 @@ AI_SSTP/
   - 예측 결과 CSV
   - 예측 시각화 PNG
   - 요약 성능 지표
+  - 성능 요약 문서: `01.down_temperature/해양기상부이/lstm_results/README.md`
 
 - `Final_Results/`
   - 지점도 HTML
