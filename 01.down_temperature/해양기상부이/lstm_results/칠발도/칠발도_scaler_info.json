@@ -1,0 +1,29 @@
+{
+    "x_scaler_min": [
+        -2.0,
+        -8.1,
+        0.0,
+        908.6,
+        0.0
+    ],
+    "x_scaler_max": [
+        31.1,
+        33.1,
+        26.2,
+        1066.9,
+        7.2
+    ],
+    "y_scaler_min": [
+        -2.0
+    ],
+    "y_scaler_max": [
+        31.1
+    ],
+    "feature_order": [
+        "sst",
+        "air_temp",
+        "wind_speed",
+        "pressure",
+        "wave_height"
+    ]
+}

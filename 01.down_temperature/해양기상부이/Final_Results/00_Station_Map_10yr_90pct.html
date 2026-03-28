@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d8a9a601bdcae11074e06f386eb38a9e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_d8a9a601bdcae11074e06f386eb38a9e" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d8a9a601bdcae11074e06f386eb38a9e = L.map(
+                "map_d8a9a601bdcae11074e06f386eb38a9e",
+                {
+                    center: [36.0, 127.5],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_4d2a645a36c92a2015778bd7ad1933e9 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri Ocean",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_4d2a645a36c92a2015778bd7ad1933e9.addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var circle_marker_29d8499cf0dbc0120e41f3fcc26e3817 = L.circleMarker(
+                [37.2361, 126.0188],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var marker_393703aed6ad68442648d5ad6e9faf37 = L.marker(
+                [37.2361, 126.0188],
+                {
+}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var div_icon_532606843fb1cec47d9142f88947f3d3 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt; font-weight:bold; background:rgba(255,255,255,0.8); border:1px solid gray; padding:2px; border-radius:3px; width:fit-content;\"\u003e\ub355\uc801\ub3c4\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+        var popup_6c704fe38cb97b701db5fdf2c3e49694 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_7219359f26e2ad38cea1b17e33afb5a6 = $(`<div id="html_7219359f26e2ad38cea1b17e33afb5a6" style="width: 100.0%; height: 100.0%;">         <div style='width:240px; font-family:Malgun Gothic; font-size:10pt;'>             <b style='font-size:11pt; color:darkblue;'>덕적도</b><br>             <hr style='margin:5px 0;'>             <b>지점번호:</b> 22101<br>             <b>위도:</b> 37.2361<br>             <b>경도:</b> 126.0188<br>             <b>Coverage:</b> 94.85%<br>             <b>유효수온:</b> 41,567<br>             <b>기대개수:</b> 43,824<br>             <b>시간간격:</b> 0 days 01:00:00         </div>         </div>`)[0];
+                popup_6c704fe38cb97b701db5fdf2c3e49694.setContent(html_7219359f26e2ad38cea1b17e33afb5a6);
+            
+        
+
+        marker_393703aed6ad68442648d5ad6e9faf37.bindPopup(popup_6c704fe38cb97b701db5fdf2c3e49694)
+        ;
+
+        
+    
+    
+                marker_393703aed6ad68442648d5ad6e9faf37.setIcon(div_icon_532606843fb1cec47d9142f88947f3d3);
+            
+    
+            var circle_marker_ba56a33ef630e8112c8e8e153d8b8464 = L.circleMarker(
+                [34.7933, 125.7769],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var marker_d151854243a4c712e175fbb2aaed2416 = L.marker(
+                [34.7933, 125.7769],
+                {
+}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var div_icon_04d52e669a8531d39dafb9017dce6e16 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt; font-weight:bold; background:rgba(255,255,255,0.8); border:1px solid gray; padding:2px; border-radius:3px; width:fit-content;\"\u003e\uce60\ubc1c\ub3c4\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+        var popup_b30de3ce0fa707c67516dcf7a2fe1d0d = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_035d98ea1706a47cbeba195e3a82986d = $(`<div id="html_035d98ea1706a47cbeba195e3a82986d" style="width: 100.0%; height: 100.0%;">         <div style='width:240px; font-family:Malgun Gothic; font-size:10pt;'>             <b style='font-size:11pt; color:darkblue;'>칠발도</b><br>             <hr style='margin:5px 0;'>             <b>지점번호:</b> 22102<br>             <b>위도:</b> 34.7933<br>             <b>경도:</b> 125.7769<br>             <b>Coverage:</b> 94.85%<br>             <b>유효수온:</b> 41,568<br>             <b>기대개수:</b> 43,824<br>             <b>시간간격:</b> 0 days 01:00:00         </div>         </div>`)[0];
+                popup_b30de3ce0fa707c67516dcf7a2fe1d0d.setContent(html_035d98ea1706a47cbeba195e3a82986d);
+            
+        
+
+        marker_d151854243a4c712e175fbb2aaed2416.bindPopup(popup_b30de3ce0fa707c67516dcf7a2fe1d0d)
+        ;
+
+        
+    
+    
+                marker_d151854243a4c712e175fbb2aaed2416.setIcon(div_icon_04d52e669a8531d39dafb9017dce6e16);
+            
+    
+            var circle_marker_25d4cdd507422e01ea783e73cbab1808 = L.circleMarker(
+                [36.25, 125.75],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var marker_1835556b7614c26207ae9224e32fd9fd = L.marker(
+                [36.25, 125.75],
+                {
+}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var div_icon_d5d77eaf011322f6e7376bc1a43ea669 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt; font-weight:bold; background:rgba(255,255,255,0.8); border:1px solid gray; padding:2px; border-radius:3px; width:fit-content;\"\u003e\uc678\uc5f0\ub3c4\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+        var popup_681af9e33225bcebb5ab13d314a3a5a3 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_bad36d7a3c35b151c4a3bc2e8843e2ae = $(`<div id="html_bad36d7a3c35b151c4a3bc2e8843e2ae" style="width: 100.0%; height: 100.0%;">         <div style='width:240px; font-family:Malgun Gothic; font-size:10pt;'>             <b style='font-size:11pt; color:darkblue;'>외연도</b><br>             <hr style='margin:5px 0;'>             <b>지점번호:</b> 22108<br>             <b>위도:</b> 36.2500<br>             <b>경도:</b> 125.7500<br>             <b>Coverage:</b> 78.20%<br>             <b>유효수온:</b> 34,270<br>             <b>기대개수:</b> 43,824<br>             <b>시간간격:</b> 0 days 01:00:00         </div>         </div>`)[0];
+                popup_681af9e33225bcebb5ab13d314a3a5a3.setContent(html_bad36d7a3c35b151c4a3bc2e8843e2ae);
+            
+        
+
+        marker_1835556b7614c26207ae9224e32fd9fd.bindPopup(popup_681af9e33225bcebb5ab13d314a3a5a3)
+        ;
+
+        
+    
+    
+                marker_1835556b7614c26207ae9224e32fd9fd.setIcon(div_icon_d5d77eaf011322f6e7376bc1a43ea669);
+            
+    
+            var circle_marker_abf8ea0b0dd6fc784a5cba0e85b0e95e = L.circleMarker(
+                [34.7333, 126.2417],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var marker_9402a4a7e2d5ba21e89fcde75d87ba8e = L.marker(
+                [34.7333, 126.2417],
+                {
+}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var div_icon_dab2d540791aac95ff14e6beacd5555d = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt; font-weight:bold; background:rgba(255,255,255,0.8); border:1px solid gray; padding:2px; border-radius:3px; width:fit-content;\"\u003e\uc2e0\uc548\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+        var popup_1670e9cf2c5fd5de48b70e86455816f3 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_25a58b49d85db9878159a9022397ec27 = $(`<div id="html_25a58b49d85db9878159a9022397ec27" style="width: 100.0%; height: 100.0%;">         <div style='width:240px; font-family:Malgun Gothic; font-size:10pt;'>             <b style='font-size:11pt; color:darkblue;'>신안</b><br>             <hr style='margin:5px 0;'>             <b>지점번호:</b> 22183<br>             <b>위도:</b> 34.7333<br>             <b>경도:</b> 126.2417<br>             <b>Coverage:</b> 81.90%<br>             <b>유효수온:</b> 35,893<br>             <b>기대개수:</b> 43,824<br>             <b>시간간격:</b> 0 days 01:00:00         </div>         </div>`)[0];
+                popup_1670e9cf2c5fd5de48b70e86455816f3.setContent(html_25a58b49d85db9878159a9022397ec27);
+            
+        
+
+        marker_9402a4a7e2d5ba21e89fcde75d87ba8e.bindPopup(popup_1670e9cf2c5fd5de48b70e86455816f3)
+        ;
+
+        
+    
+    
+                marker_9402a4a7e2d5ba21e89fcde75d87ba8e.setIcon(div_icon_dab2d540791aac95ff14e6beacd5555d);
+            
+    
+            var circle_marker_d1233a6a78fd417f5845ef2339f4ef2d = L.circleMarker(
+                [37.0917, 125.4289],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var marker_81d9a3036237e55efc1a85c31c5f12f4 = L.marker(
+                [37.0917, 125.4289],
+                {
+}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var div_icon_9ed606b8185c07329f640445a895b7ee = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt; font-weight:bold; background:rgba(255,255,255,0.8); border:1px solid gray; padding:2px; border-radius:3px; width:fit-content;\"\u003e\uc778\ucc9c\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+        var popup_90a4585841e507a975a7e7d2a5e68c27 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_9097e97d0128268362e2f2ab7cc8fc7f = $(`<div id="html_9097e97d0128268362e2f2ab7cc8fc7f" style="width: 100.0%; height: 100.0%;">         <div style='width:240px; font-family:Malgun Gothic; font-size:10pt;'>             <b style='font-size:11pt; color:darkblue;'>인천</b><br>             <hr style='margin:5px 0;'>             <b>지점번호:</b> 22185<br>             <b>위도:</b> 37.0917<br>             <b>경도:</b> 125.4289<br>             <b>Coverage:</b> 87.27%<br>             <b>유효수온:</b> 38,244<br>             <b>기대개수:</b> 43,824<br>             <b>시간간격:</b> 0 days 01:00:00         </div>         </div>`)[0];
+                popup_90a4585841e507a975a7e7d2a5e68c27.setContent(html_9097e97d0128268362e2f2ab7cc8fc7f);
+            
+        
+
+        marker_81d9a3036237e55efc1a85c31c5f12f4.bindPopup(popup_90a4585841e507a975a7e7d2a5e68c27)
+        ;
+
+        
+    
+    
+                marker_81d9a3036237e55efc1a85c31c5f12f4.setIcon(div_icon_9ed606b8185c07329f640445a895b7ee);
+            
+    
+            var circle_marker_b96462fdbe1ad15cb77f71cf7b0f9599 = L.circleMarker(
+                [35.6586, 125.8139],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var marker_4999ed6fd5812cb8e0fb43013bec6478 = L.marker(
+                [35.6586, 125.8139],
+                {
+}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var div_icon_cd858a6e762f6cc32e060a4fc3f53682 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt; font-weight:bold; background:rgba(255,255,255,0.8); border:1px solid gray; padding:2px; border-radius:3px; width:fit-content;\"\u003e\ubd80\uc548\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+        var popup_4833d2ece3eabf3527647b2df9b45f33 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_f3130c5080278355c84cb5a418e35d58 = $(`<div id="html_f3130c5080278355c84cb5a418e35d58" style="width: 100.0%; height: 100.0%;">         <div style='width:240px; font-family:Malgun Gothic; font-size:10pt;'>             <b style='font-size:11pt; color:darkblue;'>부안</b><br>             <hr style='margin:5px 0;'>             <b>지점번호:</b> 22186<br>             <b>위도:</b> 35.6586<br>             <b>경도:</b> 125.8139<br>             <b>Coverage:</b> 91.63%<br>             <b>유효수온:</b> 40,157<br>             <b>기대개수:</b> 43,824<br>             <b>시간간격:</b> 0 days 01:00:00         </div>         </div>`)[0];
+                popup_4833d2ece3eabf3527647b2df9b45f33.setContent(html_f3130c5080278355c84cb5a418e35d58);
+            
+        
+
+        marker_4999ed6fd5812cb8e0fb43013bec6478.bindPopup(popup_4833d2ece3eabf3527647b2df9b45f33)
+        ;
+
+        
+    
+    
+                marker_4999ed6fd5812cb8e0fb43013bec6478.setIcon(div_icon_cd858a6e762f6cc32e060a4fc3f53682);
+            
+    
+            var circle_marker_40bb5b3d406eeb2d35631ba8fa7094e0 = L.circleMarker(
+                [37.5, 124.0167],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var marker_f014022345992407249c23b28a67d9bf = L.marker(
+                [37.5, 124.0167],
+                {
+}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var div_icon_b9e0c5d4a79ea1bb11dbf981a43d0949 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt; font-weight:bold; background:rgba(255,255,255,0.8); border:1px solid gray; padding:2px; border-radius:3px; width:fit-content;\"\u003e\uc11c\ud574143\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+        var popup_34fb57ba84a5b253422194d584b5117b = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_169a519bdc27099d6c0464041155a60e = $(`<div id="html_169a519bdc27099d6c0464041155a60e" style="width: 100.0%; height: 100.0%;">         <div style='width:240px; font-family:Malgun Gothic; font-size:10pt;'>             <b style='font-size:11pt; color:darkblue;'>서해143</b><br>             <hr style='margin:5px 0;'>             <b>지점번호:</b> 22193<br>             <b>위도:</b> 37.5000<br>             <b>경도:</b> 124.0167<br>             <b>Coverage:</b> 10.58%<br>             <b>유효수온:</b> 4,636<br>             <b>기대개수:</b> 43,824<br>             <b>시간간격:</b> 0 days 01:00:00         </div>         </div>`)[0];
+                popup_34fb57ba84a5b253422194d584b5117b.setContent(html_169a519bdc27099d6c0464041155a60e);
+            
+        
+
+        marker_f014022345992407249c23b28a67d9bf.bindPopup(popup_34fb57ba84a5b253422194d584b5117b)
+        ;
+
+        
+    
+    
+                marker_f014022345992407249c23b28a67d9bf.setIcon(div_icon_b9e0c5d4a79ea1bb11dbf981a43d0949);
+            
+    
+            var circle_marker_c9666cbec829b31721e727f373208edd = L.circleMarker(
+                [36.1333, 124.0569],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var marker_38919f6d278239e69bbc590c6c49749f = L.marker(
+                [36.1333, 124.0569],
+                {
+}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var div_icon_f35dd89713be5f7dd26aabc1b0b306fb = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt; font-weight:bold; background:rgba(255,255,255,0.8); border:1px solid gray; padding:2px; border-radius:3px; width:fit-content;\"\u003e\uc11c\ud574170\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+        var popup_eea82d615eaa6babd9540d680ba8f50d = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_f0068d0fba15bbdf9557b3b1a82ac433 = $(`<div id="html_f0068d0fba15bbdf9557b3b1a82ac433" style="width: 100.0%; height: 100.0%;">         <div style='width:240px; font-family:Malgun Gothic; font-size:10pt;'>             <b style='font-size:11pt; color:darkblue;'>서해170</b><br>             <hr style='margin:5px 0;'>             <b>지점번호:</b> 22191<br>             <b>위도:</b> 36.1333<br>             <b>경도:</b> 124.0569<br>             <b>Coverage:</b> 94.69%<br>             <b>유효수온:</b> 41,498<br>             <b>기대개수:</b> 43,824<br>             <b>시간간격:</b> 0 days 01:00:00         </div>         </div>`)[0];
+                popup_eea82d615eaa6babd9540d680ba8f50d.setContent(html_f0068d0fba15bbdf9557b3b1a82ac433);
+            
+        
+
+        marker_38919f6d278239e69bbc590c6c49749f.bindPopup(popup_eea82d615eaa6babd9540d680ba8f50d)
+        ;
+
+        
+    
+    
+                marker_38919f6d278239e69bbc590c6c49749f.setIcon(div_icon_f35dd89713be5f7dd26aabc1b0b306fb);
+            
+    
+            var circle_marker_870ad2125f5ef09ffa5b67c785c8d586 = L.circleMarker(
+                [34.7467, 125.2456],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var marker_206687334b9382f6acda42833fe4e6d0 = L.marker(
+                [34.7467, 125.2456],
+                {
+}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var div_icon_6b691ded1a3bf9382b12cbe589a6d5ce = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt; font-weight:bold; background:rgba(255,255,255,0.8); border:1px solid gray; padding:2px; border-radius:3px; width:fit-content;\"\u003e\ud64d\ub3c4\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+        var popup_fd533b40325b2215650b006141105850 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_897a00ccef99bb4057d952ce9fcf9b23 = $(`<div id="html_897a00ccef99bb4057d952ce9fcf9b23" style="width: 100.0%; height: 100.0%;">         <div style='width:240px; font-family:Malgun Gothic; font-size:10pt;'>             <b style='font-size:11pt; color:darkblue;'>홍도</b><br>             <hr style='margin:5px 0;'>             <b>지점번호:</b> 22194<br>             <b>위도:</b> 34.7467<br>             <b>경도:</b> 125.2456<br>             <b>Coverage:</b> 94.88%<br>             <b>유효수온:</b> 41,582<br>             <b>기대개수:</b> 43,824<br>             <b>시간간격:</b> 0 days 01:00:00         </div>         </div>`)[0];
+                popup_fd533b40325b2215650b006141105850.setContent(html_897a00ccef99bb4057d952ce9fcf9b23);
+            
+        
+
+        marker_206687334b9382f6acda42833fe4e6d0.bindPopup(popup_fd533b40325b2215650b006141105850)
+        ;
+
+        
+    
+    
+                marker_206687334b9382f6acda42833fe4e6d0.setIcon(div_icon_6b691ded1a3bf9382b12cbe589a6d5ce);
+            
+    
+            var circle_marker_984a6ae8b52bc609925a8642437e2b35 = L.circleMarker(
+                [35.0, 124.13],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var marker_d2e6bdce7c50ff6feb685a18383bbf10 = L.marker(
+                [35.0, 124.13],
+                {
+}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var div_icon_2c7f20c6097ca06de3efbbb01bdf9b31 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt; font-weight:bold; background:rgba(255,255,255,0.8); border:1px solid gray; padding:2px; border-radius:3px; width:fit-content;\"\u003e\uc11c\ud574190\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+        var popup_21407945c74c9c3a3a70146f1253df80 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_b2c12653856b3b43ae1c811157f097bd = $(`<div id="html_b2c12653856b3b43ae1c811157f097bd" style="width: 100.0%; height: 100.0%;">         <div style='width:240px; font-family:Malgun Gothic; font-size:10pt;'>             <b style='font-size:11pt; color:darkblue;'>서해190</b><br>             <hr style='margin:5px 0;'>             <b>지점번호:</b> 22299<br>             <b>위도:</b> 35.0000<br>             <b>경도:</b> 124.1300<br>             <b>Coverage:</b> 96.13%<br>             <b>유효수온:</b> 42,127<br>             <b>기대개수:</b> 43,824<br>             <b>시간간격:</b> 0 days 01:00:00         </div>         </div>`)[0];
+                popup_21407945c74c9c3a3a70146f1253df80.setContent(html_b2c12653856b3b43ae1c811157f097bd);
+            
+        
+
+        marker_d2e6bdce7c50ff6feb685a18383bbf10.bindPopup(popup_21407945c74c9c3a3a70146f1253df80)
+        ;
+
+        
+    
+    
+                marker_d2e6bdce7c50ff6feb685a18383bbf10.setIcon(div_icon_2c7f20c6097ca06de3efbbb01bdf9b31);
+            
+    
+            var circle_marker_72b277ba88a2aa751451a84ac3e557d2 = L.circleMarker(
+                [35.0175, 126.0319],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var marker_e3f0954dae572a46afddc3aa0c728024 = L.marker(
+                [35.0175, 126.0319],
+                {
+}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var div_icon_2b096c6cc21ab412f9af96e9372925db = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt; font-weight:bold; background:rgba(255,255,255,0.8); border:1px solid gray; padding:2px; border-radius:3px; width:fit-content;\"\u003e\ub300\uce58\ub9c8\ub3c4\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+        var popup_5f3f913545028a786349bd836ce757a2 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_93f6c9f25695e93e9aab0e2fb73dbc43 = $(`<div id="html_93f6c9f25695e93e9aab0e2fb73dbc43" style="width: 100.0%; height: 100.0%;">         <div style='width:240px; font-family:Malgun Gothic; font-size:10pt;'>             <b style='font-size:11pt; color:darkblue;'>대치마도</b><br>             <hr style='margin:5px 0;'>             <b>지점번호:</b> 22489<br>             <b>위도:</b> 35.0175<br>             <b>경도:</b> 126.0319<br>             <b>Coverage:</b> 1.96%<br>             <b>유효수온:</b> 861<br>             <b>기대개수:</b> 43,824<br>             <b>시간간격:</b> 0 days 01:00:00         </div>         </div>`)[0];
+                popup_5f3f913545028a786349bd836ce757a2.setContent(html_93f6c9f25695e93e9aab0e2fb73dbc43);
+            
+        
+
+        marker_e3f0954dae572a46afddc3aa0c728024.bindPopup(popup_5f3f913545028a786349bd836ce757a2)
+        ;
+
+        
+    
+    
+                marker_e3f0954dae572a46afddc3aa0c728024.setIcon(div_icon_2b096c6cc21ab412f9af96e9372925db);
+            
+    
+            var circle_marker_de8871d69d5dcd0882239b9a927df0c1 = L.circleMarker(
+                [36.4514, 126.24],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var marker_2f26f2aa54b359030725f006aaff7c25 = L.marker(
+                [36.4514, 126.24],
+                {
+}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var div_icon_6bef95da4154b7e4623bdfaf6cbaac24 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt; font-weight:bold; background:rgba(255,255,255,0.8); border:1px solid gray; padding:2px; border-radius:3px; width:fit-content;\"\u003e\ub0b4\ud30c\uc218\ub3c4\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+        var popup_9c038816c0f073888bf983452384210c = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_3d102a6202b162141f652c0f104a15e7 = $(`<div id="html_3d102a6202b162141f652c0f104a15e7" style="width: 100.0%; height: 100.0%;">         <div style='width:240px; font-family:Malgun Gothic; font-size:10pt;'>             <b style='font-size:11pt; color:darkblue;'>내파수도</b><br>             <hr style='margin:5px 0;'>             <b>지점번호:</b> 22446<br>             <b>위도:</b> 36.4514<br>             <b>경도:</b> 126.2400<br>             <b>Coverage:</b> 10.39%<br>             <b>유효수온:</b> 4,554<br>             <b>기대개수:</b> 43,824<br>             <b>시간간격:</b> 0 days 01:00:00         </div>         </div>`)[0];
+                popup_9c038816c0f073888bf983452384210c.setContent(html_3d102a6202b162141f652c0f104a15e7);
+            
+        
+
+        marker_2f26f2aa54b359030725f006aaff7c25.bindPopup(popup_9c038816c0f073888bf983452384210c)
+        ;
+
+        
+    
+    
+                marker_2f26f2aa54b359030725f006aaff7c25.setIcon(div_icon_6bef95da4154b7e4623bdfaf6cbaac24);
+            
+    
+            var circle_marker_4f991710286d4f94d0ac4b3ee7210cae = L.circleMarker(
+                [35.2833, 125.15],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var marker_8f9186e5622b166298716e32eaeb5221 = L.marker(
+                [35.2833, 125.15],
+                {
+}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var div_icon_f578f0acc17e89e709162ea19d8c6fce = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt; font-weight:bold; background:rgba(255,255,255,0.8); border:1px solid gray; padding:2px; border-radius:3px; width:fit-content;\"\u003e\uc11c\ud574192\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+        var popup_e1e483263df6a4333d23fe9dffc7e5b2 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_3d5499c6434521549b8d68ac1611edde = $(`<div id="html_3d5499c6434521549b8d68ac1611edde" style="width: 100.0%; height: 100.0%;">         <div style='width:240px; font-family:Malgun Gothic; font-size:10pt;'>             <b style='font-size:11pt; color:darkblue;'>서해192</b><br>             <hr style='margin:5px 0;'>             <b>지점번호:</b> 22308<br>             <b>위도:</b> 35.2833<br>             <b>경도:</b> 125.1500<br>             <b>Coverage:</b> 11.72%<br>             <b>유효수온:</b> 5,138<br>             <b>기대개수:</b> 43,824<br>             <b>시간간격:</b> 0 days 01:00:00         </div>         </div>`)[0];
+                popup_e1e483263df6a4333d23fe9dffc7e5b2.setContent(html_3d5499c6434521549b8d68ac1611edde);
+            
+        
+
+        marker_8f9186e5622b166298716e32eaeb5221.bindPopup(popup_e1e483263df6a4333d23fe9dffc7e5b2)
+        ;
+
+        
+    
+    
+                marker_8f9186e5622b166298716e32eaeb5221.setIcon(div_icon_f578f0acc17e89e709162ea19d8c6fce);
+            
+    
+            var circle_marker_7d0341ef3ad1575d279c5e55a7ac30c6 = L.circleMarker(
+                [36.75, 125.6083],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var marker_3e46a6d149b47ecdd76da4fd8c76f26d = L.marker(
+                [36.75, 125.6083],
+                {
+}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var div_icon_e051634a36458a486bd591c693ef5426 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt; font-weight:bold; background:rgba(255,255,255,0.8); border:1px solid gray; padding:2px; border-radius:3px; width:fit-content;\"\u003e\uc11c\ud574163\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+        var popup_373209ff7b1496cfc719fb7bac66777f = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_58554d0683924bbe36e9156c143b3bdd = $(`<div id="html_58554d0683924bbe36e9156c143b3bdd" style="width: 100.0%; height: 100.0%;">         <div style='width:240px; font-family:Malgun Gothic; font-size:10pt;'>             <b style='font-size:11pt; color:darkblue;'>서해163</b><br>             <hr style='margin:5px 0;'>             <b>지점번호:</b> 22307<br>             <b>위도:</b> 36.7500<br>             <b>경도:</b> 125.6083<br>             <b>Coverage:</b> 8.31%<br>             <b>유효수온:</b> 3,642<br>             <b>기대개수:</b> 43,824<br>             <b>시간간격:</b> 0 days 01:00:00         </div>         </div>`)[0];
+                popup_373209ff7b1496cfc719fb7bac66777f.setContent(html_58554d0683924bbe36e9156c143b3bdd);
+            
+        
+
+        marker_3e46a6d149b47ecdd76da4fd8c76f26d.bindPopup(popup_373209ff7b1496cfc719fb7bac66777f)
+        ;
+
+        
+    
+    
+                marker_3e46a6d149b47ecdd76da4fd8c76f26d.setIcon(div_icon_e051634a36458a486bd591c693ef5426);
+            
+    
+            var circle_marker_b9f822c7acfe0a4207cbbe0265e21855 = L.circleMarker(
+                [37.05, 124.6167],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var marker_abc7f70f133e648756340af399eb8989 = L.marker(
+                [37.05, 124.6167],
+                {
+}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var div_icon_c0eda61c5ce8282a46f5dd234d202134 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt; font-weight:bold; background:rgba(255,255,255,0.8); border:1px solid gray; padding:2px; border-radius:3px; width:fit-content;\"\u003e\uc11c\ud574151\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+        var popup_a745d30b73c0ae2d26045525bda50cb1 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_64d2f98c4b61484cad0f5f10feaca41f = $(`<div id="html_64d2f98c4b61484cad0f5f10feaca41f" style="width: 100.0%; height: 100.0%;">         <div style='width:240px; font-family:Malgun Gothic; font-size:10pt;'>             <b style='font-size:11pt; color:darkblue;'>서해151</b><br>             <hr style='margin:5px 0;'>             <b>지점번호:</b> 22306<br>             <b>위도:</b> 37.0500<br>             <b>경도:</b> 124.6167<br>             <b>Coverage:</b> 17.05%<br>             <b>유효수온:</b> 7,471<br>             <b>기대개수:</b> 43,824<br>             <b>시간간격:</b> 0 days 01:00:00         </div>         </div>`)[0];
+                popup_a745d30b73c0ae2d26045525bda50cb1.setContent(html_64d2f98c4b61484cad0f5f10feaca41f);
+            
+        
+
+        marker_abc7f70f133e648756340af399eb8989.bindPopup(popup_a745d30b73c0ae2d26045525bda50cb1)
+        ;
+
+        
+    
+    
+                marker_abc7f70f133e648756340af399eb8989.setIcon(div_icon_c0eda61c5ce8282a46f5dd234d202134);
+            
+    
+            var circle_marker_b40bf93e1eda33c80b023a10ea87ff28 = L.circleMarker(
+                [37.1583, 126.41],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var marker_1ebc11bc43223fad6e85f85593090fae = L.marker(
+                [37.1583, 126.41],
+                {
+}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var div_icon_a728da917afd3372219fdc9cac93b58b = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt; font-weight:bold; background:rgba(255,255,255,0.8); border:1px solid gray; padding:2px; border-radius:3px; width:fit-content;\"\u003e\ud48d\ub3c4\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+        var popup_d457ea01490b1885f88cf823386b27a6 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_4e487018bcfd0c319fe73e2a6a9edc2c = $(`<div id="html_4e487018bcfd0c319fe73e2a6a9edc2c" style="width: 100.0%; height: 100.0%;">         <div style='width:240px; font-family:Malgun Gothic; font-size:10pt;'>             <b style='font-size:11pt; color:darkblue;'>풍도</b><br>             <hr style='margin:5px 0;'>             <b>지점번호:</b> 22303<br>             <b>위도:</b> 37.1583<br>             <b>경도:</b> 126.4100<br>             <b>Coverage:</b> 83.29%<br>             <b>유효수온:</b> 36,499<br>             <b>기대개수:</b> 43,824<br>             <b>시간간격:</b> 0 days 01:00:00         </div>         </div>`)[0];
+                popup_d457ea01490b1885f88cf823386b27a6.setContent(html_4e487018bcfd0c319fe73e2a6a9edc2c);
+            
+        
+
+        marker_1ebc11bc43223fad6e85f85593090fae.bindPopup(popup_d457ea01490b1885f88cf823386b27a6)
+        ;
+
+        
+    
+    
+                marker_1ebc11bc43223fad6e85f85593090fae.setIcon(div_icon_a728da917afd3372219fdc9cac93b58b);
+            
+    
+            var circle_marker_41ef6ab8fceca054246e45650ec76a39 = L.circleMarker(
+                [35.643, 126.3586],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var marker_e2c2c40ac51bb7f0e0c18752bca19a12 = L.marker(
+                [35.643, 126.3586],
+                {
+}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var div_icon_fd3871f304506f734a4023232086a052 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt; font-weight:bold; background:rgba(255,255,255,0.8); border:1px solid gray; padding:2px; border-radius:3px; width:fit-content;\"\u003e\uc704\ub3c4\ub3d9\ubd80\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+        var popup_d47c2d7bc2ffdb04f3d1357a58d91ba1 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_6efc78aa3c165829b48918774b3fd787 = $(`<div id="html_6efc78aa3c165829b48918774b3fd787" style="width: 100.0%; height: 100.0%;">         <div style='width:240px; font-family:Malgun Gothic; font-size:10pt;'>             <b style='font-size:11pt; color:darkblue;'>위도동부</b><br>             <hr style='margin:5px 0;'>             <b>지점번호:</b> 22510<br>             <b>위도:</b> 35.6430<br>             <b>경도:</b> 126.3586<br>             <b>Coverage:</b> 10.42%<br>             <b>유효수온:</b> 4,566<br>             <b>기대개수:</b> 43,824<br>             <b>시간간격:</b> 0 days 01:00:00         </div>         </div>`)[0];
+                popup_d47c2d7bc2ffdb04f3d1357a58d91ba1.setContent(html_6efc78aa3c165829b48918774b3fd787);
+            
+        
+
+        marker_e2c2c40ac51bb7f0e0c18752bca19a12.bindPopup(popup_d47c2d7bc2ffdb04f3d1357a58d91ba1)
+        ;
+
+        
+    
+    
+                marker_e2c2c40ac51bb7f0e0c18752bca19a12.setIcon(div_icon_fd3871f304506f734a4023232086a052);
+            
+    
+            var circle_marker_4b421f0a4f7e587dd72a9ab98a901f6e = L.circleMarker(
+                [37.6194, 125.6483],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var marker_e21a11ab2a38acb94b090d209a0c4486 = L.marker(
+                [37.6194, 125.6483],
+                {
+}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var div_icon_d67dca7b1c8f471ed2e1526d543ec5c2 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt; font-weight:bold; background:rgba(255,255,255,0.8); border:1px solid gray; padding:2px; border-radius:3px; width:fit-content;\"\u003e\uc5f0\ud3c9\ub3c4\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+        var popup_d614c83e19e086f92e974b10f097b163 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_6623362313d446ce8865cf4015f140e6 = $(`<div id="html_6623362313d446ce8865cf4015f140e6" style="width: 100.0%; height: 100.0%;">         <div style='width:240px; font-family:Malgun Gothic; font-size:10pt;'>             <b style='font-size:11pt; color:darkblue;'>연평도</b><br>             <hr style='margin:5px 0;'>             <b>지점번호:</b> 22522<br>             <b>위도:</b> 37.6194<br>             <b>경도:</b> 125.6483<br>             <b>Coverage:</b> 10.23%<br>             <b>유효수온:</b> 4,482<br>             <b>기대개수:</b> 43,824<br>             <b>시간간격:</b> 0 days 01:00:00         </div>         </div>`)[0];
+                popup_d614c83e19e086f92e974b10f097b163.setContent(html_6623362313d446ce8865cf4015f140e6);
+            
+        
+
+        marker_e21a11ab2a38acb94b090d209a0c4486.bindPopup(popup_d614c83e19e086f92e974b10f097b163)
+        ;
+
+        
+    
+    
+                marker_e21a11ab2a38acb94b090d209a0c4486.setIcon(div_icon_d67dca7b1c8f471ed2e1526d543ec5c2);
+            
+    
+            var circle_marker_038b0425ad268724d6f4b31f92ee6df3 = L.circleMarker(
+                [34.9192, 125.8681],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 3}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var marker_02cf360f9b4d9979ff74fd2487dba77e = L.marker(
+                [34.9192, 125.8681],
+                {
+}
+            ).addTo(map_d8a9a601bdcae11074e06f386eb38a9e);
+        
+    
+            var div_icon_815e681d4ea8b5bb1ef95f50d2f01805 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9pt; font-weight:bold; background:rgba(255,255,255,0.8); border:1px solid gray; padding:2px; border-radius:3px; width:fit-content;\"\u003e\uc790\uc740\u003c/div\u003e",
+  "iconSize": [120, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+        var popup_c68171336c31e62f1edc905b806dfea4 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_14f155b7e2bbcdd42fbfe65f1cbb500b = $(`<div id="html_14f155b7e2bbcdd42fbfe65f1cbb500b" style="width: 100.0%; height: 100.0%;">         <div style='width:240px; font-family:Malgun Gothic; font-size:10pt;'>             <b style='font-size:11pt; color:darkblue;'>자은</b><br>             <hr style='margin:5px 0;'>             <b>지점번호:</b> 22493<br>             <b>위도:</b> 34.9192<br>             <b>경도:</b> 125.8681<br>             <b>Coverage:</b> 10.41%<br>             <b>유효수온:</b> 4,564<br>             <b>기대개수:</b> 43,824<br>             <b>시간간격:</b> 0 days 01:00:00         </div>         </div>`)[0];
+                popup_c68171336c31e62f1edc905b806dfea4.setContent(html_14f155b7e2bbcdd42fbfe65f1cbb500b);
+            
+        
+
+        marker_02cf360f9b4d9979ff74fd2487dba77e.bindPopup(popup_c68171336c31e62f1edc905b806dfea4)
+        ;
+
+        
+    
+    
+                marker_02cf360f9b4d9979ff74fd2487dba77e.setIcon(div_icon_815e681d4ea8b5bb1ef95f50d2f01805);
+            
+</script>
+</html>
