@@ -9,8 +9,8 @@ import zipfile
 import os
 
 def extract_zips_in_subfolders():
-    # 1. 현재 파이썬 파일이 있는 위치를 시작점으로 설정
-    root_dir = os.getcwd()
+    # 실행 위치와 무관하게 스크립트가 있는 폴더를 시작점으로 사용한다.
+    root_dir = os.path.dirname(os.path.abspath(__file__))
     print(f"탐색 시작 디렉토리: {root_dir}")
     print("-" * 50)
 

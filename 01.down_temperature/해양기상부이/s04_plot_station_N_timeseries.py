@@ -7,15 +7,41 @@ Created on Fri Mar 27 12:48:44 2026
 
 # -*- coding: utf-8 -*-
 import os
+import unicodedata
 import pandas as pd
 import folium
 from folium.features import DivIcon
 import matplotlib.pyplot as plt
+from matplotlib import font_manager
 from datetime import datetime
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+OUTPUT_TAG = "2021_2025_90pct"
+
+def choose_plot_font():
+    candidates = [
+        "AppleGothic",
+        "Malgun Gothic",
+        "NanumGothic",
+        "NanumBarunGothic",
+        "Noto Sans CJK KR",
+        "Arial Unicode MS",
+        "DejaVu Sans",
+    ]
+    available = {font.name for font in font_manager.fontManager.ttflist}
+    for name in candidates:
+        if name in available:
+            return name
+    return "DejaVu Sans"
+
+
 # 한글 폰트 설정
-plt.rcParams['font.family'] = 'Malgun Gothic'
+plt.rcParams['font.family'] = choose_plot_font()
 plt.rcParams['axes.unicode_minus'] = False
+
+
+def normalize_text(value):
+    return unicodedata.normalize("NFC", str(value).strip())
 
 
 def load_meta(meta_path):
@@ -25,8 +51,8 @@ def load_meta(meta_path):
         meta_df = pd.read_csv(meta_path, encoding='utf-8', skipinitialspace=True)
 
     meta_df = meta_df.copy()
-    meta_df["지점"] = meta_df.iloc[:, 0].astype(str).str.strip()
-    meta_df["지점명"] = meta_df.iloc[:, 3].astype(str).str.strip()
+    meta_df["지점"] = meta_df.iloc[:, 0].astype(str).map(normalize_text)
+    meta_df["지점명"] = meta_df.iloc[:, 3].astype(str).map(normalize_text)
     meta_df["위도"] = pd.to_numeric(meta_df["위도"], errors="coerce")
     meta_df["경도"] = pd.to_numeric(meta_df["경도"], errors="coerce")
 
@@ -36,7 +62,7 @@ def load_meta(meta_path):
 
 def get_station_name_from_filename(filename):
     base = os.path.splitext(filename)[0]
-    return base.split("_")[0].strip()
+    return normalize_text(base.split("_")[0])
 
 
 def read_station_file(path):
@@ -119,12 +145,12 @@ def compute_sst_coverage(df, start_date, end_date):
 
 def select_good_stations(meta_df, data_dir, start_date, end_date, threshold=0.90):
     """
-    10년 기간 동안 수온 유효값 비율이 threshold 이상인 지점만 선택
+    주어진 기간 동안 수온 유효값 비율이 threshold 이상인 지점만 선택
     """
     selected = []
     files = [f for f in os.listdir(data_dir) if f.endswith(".csv")]
 
-    print("📌 10년 자료 완전성(coverage) 평가 시작")
+    print("📌 자료 완전성(coverage) 평가 시작")
     print(f"   기간: {start_date.date()} ~ {end_date.date()}")
     print(f"   기준: 수온 유효값 비율 >= {threshold:.0%}")
     print("-" * 70)
@@ -232,7 +258,7 @@ def plot_station_map(selected_stations, output_dir):
             popup=folium.Popup(popup_html, max_width=260)
         ).add_to(m)
 
-    out_html = os.path.join(output_dir, "00_Station_Map_10yr_90pct.html")
+    out_html = os.path.join(output_dir, f"00_Station_Map_{OUTPUT_TAG}.html")
     m.save(out_html)
     print(f"🗺️ 정점도 저장 완료: {out_html}")
 
@@ -277,7 +303,7 @@ def plot_station_timeseries(selected_stations, data_dir, output_dir, plot_start,
 
             out_png = os.path.join(
                 output_dir,
-                f'Chart_{st["station_name"]}_10yr90pct.png'
+                f'Chart_{st["station_name"]}_{OUTPUT_TAG}.png'
             )
             plt.savefig(out_png, dpi=200)
             plt.close()
@@ -289,11 +315,11 @@ def plot_station_timeseries(selected_stations, data_dir, output_dir, plot_start,
 
 
 def main():
-    meta_path = "META_관측지점정보_해양기상부이.csv"
-    data_dir = "merge_data"
-    output_dir = "Final_Results"
+    meta_path = os.path.join(BASE_DIR, "META_관측지점정보_해양기상부이.csv")
+    data_dir = os.path.join(BASE_DIR, "merge_data")
+    output_dir = os.path.join(BASE_DIR, "Final_Results")
 
-    # 10년 완전성 평가 구간
+    # 2021~2025 기간 완전성 평가 구간
     coverage_start = datetime(2021, 1, 1)
     coverage_end = datetime(2025, 12, 31, 23, 59, 59)
 
@@ -308,7 +334,7 @@ def main():
         data_dir=data_dir,
         start_date=coverage_start,
         end_date=coverage_end,
-        threshold=0.0
+        threshold=0.90
     )
 
     plot_station_map(selected_stations, output_dir)

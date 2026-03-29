@@ -9,8 +9,8 @@ import zipfile
 import os
 
 def extract_all_zips():
-    # 1. 현재 파이썬 파일이 실행되는 경로를 가져옵니다.
-    current_dir = os.getcwd()
+    # 실행 위치와 무관하게 스크립트가 있는 폴더를 기준으로 동작한다.
+    current_dir = os.path.dirname(os.path.abspath(__file__))
     print(f"현재 작업 디렉토리: {current_dir}")
 
     # 2. 현재 폴더 내의 모든 파일을 리스트업합니다.
@@ -27,13 +27,13 @@ def extract_all_zips():
         # 파일명에서 확장자를 제외한 이름으로 폴더 생성 (예: data.zip -> data 폴더)
         folder_name = os.path.splitext(zip_file)[0]
         extract_path = os.path.join(current_dir, folder_name)
+        zip_path = os.path.join(current_dir, zip_file)
 
         if not os.path.exists(extract_path):
             os.makedirs(extract_path)
 
         try:
-            with zipfile.ZipFile(zip_file, 'r') as zip_ref:
-                # 압축 해제 시 한글 깨짐 방지 (CP437 -> UTF-8 변환이 필요한 경우 대비)
+            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
                 zip_ref.extractall(extract_path)
                 print(f"성공: [{zip_file}] -> [{folder_name}] 폴더에 해제됨")
         except Exception as e:

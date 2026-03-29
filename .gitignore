@@ -185,3 +185,7 @@ cython_debug/
 
 # macOS
 .DS_Store
+
+# Numerical Model Data (AI_SSTP)
+*.nc
+02.down_numerical_models/s01_copernicus_nc_data/
