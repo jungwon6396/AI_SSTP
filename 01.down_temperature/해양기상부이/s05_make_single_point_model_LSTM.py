@@ -44,8 +44,9 @@ warnings.filterwarnings("ignore")
 # =========================
 # 0. 기본 설정
 # =========================
-INPUT_DIR = "./merge_data"
-OUTPUT_DIR = "./lstm_results"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+INPUT_DIR = os.path.join(BASE_DIR, "merge_data")
+OUTPUT_DIR = os.path.join(BASE_DIR, "lstm_results")
 
 TARGET_STATIONS = [
     "서해190",
@@ -57,14 +58,14 @@ TARGET_STATIONS = [
 ]
 
 # 파일 내부 컬럼 규칙 (1-based 기준)
-# 2번째 컬럼(일시), 3번째 컬럼(풍속), 6번째 컬럼(현지기압), 8번째 컬럼(기온),
-# 9번째 컬럼(수온), 11번째 컬럼(유의파고)
-COL_IDX_DATETIME = 1
-COL_IDX_WIND = 2
-COL_IDX_PRESSURE = 5
-COL_IDX_AIR_TEMP = 7
-COL_IDX_SST = 8
-COL_IDX_WAVE = 10
+COLUMN_CANDIDATES = {
+    "datetime": ["일시"],
+    "wind_speed": ["풍속(m/s)", "풍속"],
+    "pressure": ["현지기압(hPa)", "현지기압"],
+    "air_temp": ["기온(°C)", "기온"],
+    "sst": ["수온(°C)", "수온"],
+    "wave_height": ["유의파고(m)", "유의파고"],
+}
 
 # 모델/학습 설정
 SEQ_LENGTH = 24 * 7       # 과거 7일 (시간자료 가정)
@@ -95,6 +96,9 @@ def set_seed(seed=42):
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
+    if hasattr(torch.backends, "cudnn"):
+        torch.backends.cudnn.deterministic = True
+        torch.backends.cudnn.benchmark = False
 
 
 # =========================
@@ -147,9 +151,16 @@ def station_file_path(station_name: str) -> str:
     return os.path.join(INPUT_DIR, f"{station_name}_통합데이터.csv")
 
 
+def find_first_matching_column(df: pd.DataFrame, candidates):
+    for candidate in candidates:
+        if candidate in df.columns:
+            return candidate
+    raise KeyError(f"필수 컬럼을 찾지 못했습니다. 후보={candidates}")
+
+
 def load_station_data(file_path: str) -> pd.DataFrame:
     """
-    파일 내부 컬럼 위치 기준으로 필요한 컬럼만 읽어서 표준 컬럼명으로 정리
+    파일 컬럼명을 기준으로 필요한 컬럼만 읽어서 표준 컬럼명으로 정리
     """
     try:
         df = pd.read_csv(file_path, encoding="cp949")
@@ -159,29 +170,18 @@ def load_station_data(file_path: str) -> pd.DataFrame:
     if df.empty:
         raise ValueError("빈 파일입니다.")
 
-    # 위치 기반 컬럼 추출
-    cols = df.columns.tolist()
-
-    required_indices = [
-        COL_IDX_DATETIME,
-        COL_IDX_WIND,
-        COL_IDX_PRESSURE,
-        COL_IDX_AIR_TEMP,
-        COL_IDX_SST,
-        COL_IDX_WAVE
-    ]
-
-    for idx in required_indices:
-        if idx >= len(cols):
-            raise IndexError(f"필요한 컬럼 인덱스 {idx}가 파일 컬럼 범위를 벗어났습니다.")
+    selected_columns = {
+        key: find_first_matching_column(df, candidates)
+        for key, candidates in COLUMN_CANDIDATES.items()
+    }
 
     use_df = pd.DataFrame({
-        "datetime": pd.to_datetime(df.iloc[:, COL_IDX_DATETIME], errors="coerce"),
-        "wind_speed": pd.to_numeric(df.iloc[:, COL_IDX_WIND], errors="coerce"),
-        "pressure": pd.to_numeric(df.iloc[:, COL_IDX_PRESSURE], errors="coerce"),
-        "air_temp": pd.to_numeric(df.iloc[:, COL_IDX_AIR_TEMP], errors="coerce"),
-        "sst": pd.to_numeric(df.iloc[:, COL_IDX_SST], errors="coerce"),
-        "wave_height": pd.to_numeric(df.iloc[:, COL_IDX_WAVE], errors="coerce"),
+        "datetime": pd.to_datetime(df[selected_columns["datetime"]], errors="coerce"),
+        "wind_speed": pd.to_numeric(df[selected_columns["wind_speed"]], errors="coerce"),
+        "pressure": pd.to_numeric(df[selected_columns["pressure"]], errors="coerce"),
+        "air_temp": pd.to_numeric(df[selected_columns["air_temp"]], errors="coerce"),
+        "sst": pd.to_numeric(df[selected_columns["sst"]], errors="coerce"),
+        "wave_height": pd.to_numeric(df[selected_columns["wave_height"]], errors="coerce"),
     })
 
     # 결측 제거
@@ -376,7 +376,7 @@ def train_for_station(station_name: str):
     val_dataset = SequenceDataset(X_val, y_val)
     test_dataset = SequenceDataset(X_test, y_test)
 
-    train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=False)
+    train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
     val_loader = DataLoader(val_dataset, batch_size=BATCH_SIZE, shuffle=False)
     test_loader = DataLoader(test_dataset, batch_size=BATCH_SIZE, shuffle=False)
 

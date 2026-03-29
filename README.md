@@ -1,6 +1,7 @@
 # AI_SSTP
 
 해양기상부이 자료를 정리하고, 지점별 통합 데이터를 생성한 뒤, 저수온 관련 분석 및 LSTM 기반 단일 지점 수온 예측 결과를 보관하는 저장소입니다.
+또한 Copernicus 해양 수치모델 자료를 내려받기 위한 보조 스크립트도 포함합니다.
 
 ## 현재 포함된 작업
 
@@ -8,9 +9,12 @@
   - 해양기상부이 원천 압축 자료
   - 압축 해제 및 재정리용 스크립트
   - 지점별 통합 데이터 생성 스크립트
-  - 시계열 시각화 결과
+  - 2021~2025 기간 기준 완전성 필터링 및 시계열 시각화 결과
   - LSTM 학습 결과와 예측 산출물
   - 최종 HTML/PNG 결과물
+- `02.down_numerical_models/`
+  - Copernicus Marine 수치모델 다운로드 스크립트
+  - 수치모델 다운로드용 의존성 목록
 
 ## 디렉터리 구조
 
@@ -28,6 +32,9 @@ AI_SSTP/
 │       ├── s03_search_files_N_merge.py
 │       ├── s04_plot_station_N_timeseries.py
 │       └── s05_make_single_point_model_LSTM.py
+├── 02.down_numerical_models/
+│   ├── requirements_model.txt
+│   └── s01_download_copernicus.py
 ├── LICENSE
 └── README.md
 ```
@@ -37,21 +44,24 @@ AI_SSTP/
 ### 1. 압축 파일 해제
 
 - `s01_unzip_files.py`
-  - 현재 작업 디렉터리의 ZIP 파일을 동일한 이름의 폴더로 해제합니다.
+  - 스크립트가 있는 폴더의 ZIP 파일을 동일한 이름의 폴더로 해제합니다.
 
 - `s02_unzip_in_subfolders.py`
-  - 하위 폴더 내부에 있는 ZIP 파일까지 재귀적으로 해제하는 용도로 사용합니다.
+  - 스크립트가 있는 폴더를 기준으로 하위 폴더 내부 ZIP까지 재귀적으로 해제합니다.
 
 ### 2. 메타데이터 기준 통합 데이터 생성
 
 - `s03_search_files_N_merge.py`
   - `META_관측지점정보_해양기상부이.csv`를 기준으로 관측 ID와 기간을 읽습니다.
   - `old_data/` 아래 CSV를 순회하면서 행 단위로 관측 기간을 판별합니다.
+  - `cp949`와 `utf-8` 인코딩을 순차적으로 시도합니다.
   - 지점별 통합 결과를 `merge_data/{지점명}_통합데이터.csv`로 저장합니다.
 
 ### 3. 시각화
 
 - `s04_plot_station_N_timeseries.py`
+  - `2021-01-01`부터 `2025-12-31`까지 기간을 기준으로 수온 자료 완전성을 평가합니다.
+  - 수온 유효값 비율이 90% 이상인 지점만 선택합니다.
   - 지점 위치 및 시계열 결과를 시각화합니다.
   - 주요 결과는 `Final_Results/`에 HTML 및 PNG 형태로 저장됩니다.
 
@@ -64,6 +74,7 @@ AI_SSTP/
     - 풍속
     - 기압
     - 유의파고
+  - 입력 컬럼은 CSV 헤더명을 기준으로 탐색합니다.
   - 예측 대상:
     - 다음 시점의 수온
   - 분할 방식:
@@ -71,6 +82,13 @@ AI_SSTP/
     - train / validation / test = 70 / 15 / 15
   - 결과 저장:
     - `lstm_results/` 아래 지점별 모델, 학습 곡선, 예측 CSV, 예측 그래프, 요약 지표
+
+### 5. Copernicus 해양 수치모델 다운로드
+
+- `02.down_numerical_models/s01_download_copernicus.py`
+  - Copernicus Marine 인증 이후 관심 영역의 해양 물리 변수를 NetCDF로 다운로드합니다.
+  - 기본 출력 폴더는 `02.down_numerical_models/s01_copernicus_nc_data/`입니다.
+  - 실행 전 `copernicusmarine login`이 필요합니다.
 
 ## 주요 산출물
 
@@ -96,7 +114,9 @@ AI_SSTP/
 
 - 일부 CSV는 `cp949` 인코딩을 사용합니다.
 - 스크립트는 한글 파일명과 폴더명을 전제로 작성되어 있습니다.
+- 주요 스크립트는 현재 작업 디렉터리가 아니라 스크립트 파일 위치를 기준으로 경로를 해석합니다.
 - LSTM 학습 스크립트는 `pandas`, `numpy`, `matplotlib`, `scikit-learn`, `torch`가 필요합니다.
+- Copernicus 다운로드 스크립트는 `02.down_numerical_models/requirements_model.txt` 기준 의존성이 필요합니다.
 
 ## 주의사항
 
