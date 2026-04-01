@@ -14,6 +14,7 @@ import os
 import argparse
 import tempfile
 from pathlib import Path
+import matplotlib.pyplot as plt
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 TEMP_CACHE_DIR = os.path.join(tempfile.gettempdir(), "ai_sstp_cache")
@@ -302,6 +303,7 @@ def plot_downloaded_outputs(output_dir: str):
         print(f"   -> 그림 생성: {nc_path.name}")
         try:
             plot_copernicus_file(str(nc_path), plot_root)
+            plt.close('all')
             print("      ✅ 완료")
         except Exception as e:
             print(f"      ❌ 실패: {e}")
@@ -325,10 +327,11 @@ def download_copernicus_data(output_dir: str, start_date: str, end_date: str, ma
     os.makedirs(output_dir, exist_ok=True)
 
     DATASETS_MAP = {
-        "thetao": "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m",
-        "so": "cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m",
-        "cur": "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m",
-        "2d_vars": "cmems_mod_glo_phy_anfc_0.083deg_P1D-m",
+        "thetao": "cmems_mod_glo_phy-thetao_anfc_0.083deg_P1D-m", # 표층 수온
+        "so": "cmems_mod_glo_phy-so_anfc_0.083deg_P1D-m", # 표층 염분
+        "cur": "cmems_mod_glo_phy-cur_anfc_0.083deg_P1D-m", # 해류 (uo, vo)
+        "2d_vars": "cmems_mod_glo_phy_anfc_0.083deg_P1D-m", # 2차원 변수 (zos, mlotst)
+        
     }
 
     VARIABLES_MAP = {

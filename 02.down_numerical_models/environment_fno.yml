@@ -1,0 +1,16 @@
+name: fno
+channels:
+  - pytorch
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pytorch
+  - cpuonly
+  - numpy<2.0.0
+  - pandas>=2.0.0
+  - xarray>=2023.0.0
+  - netcdf4>=1.6.0
+  - matplotlib>=3.7.0
+  - pip
+  - pip:
+      - copernicusmarine>=1.0.0

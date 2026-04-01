@@ -189,3 +189,14 @@ cython_debug/
 # Numerical Model Data (AI_SSTP)
 *.nc
 02.down_numerical_models/s01_copernicus_nc_data/
+03.copernicus_marine_nc_data/
+
+# FNO/LSTM model artifacts
+*.pt
+*.pth
+02.down_numerical_models/s04_fno_baseline_multilead/
+02.down_numerical_models/s05_fno_runs/
+
+# Raw archive / heavy source dumps
+01.down_temperature/해양기상부이/old_data/
+*.zip
